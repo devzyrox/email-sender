@@ -10,8 +10,8 @@ const app = express();
 const port = Number(process.env.PORT || 3001);
 
 app.use(cors({
-  origin: process.env.ALLOWED_ORIGIN || "http://localhost:5173",
-  methods: ["GET", "POST"],
+  origin: true,
+  methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type"]
 }));
 app.use(express.json({ limit: "1mb" }));
@@ -269,6 +269,6 @@ VexFoundry`,
   });
 });
 
-app.listen(port, () => {
-  console.log("VEXFOUNDRY Order Bot running on http://localhost:" + port);
+app.listen(port, "0.0.0.0", () => {
+  console.log("VEXFOUNDRY Order Bot running on port " + port);
 });
